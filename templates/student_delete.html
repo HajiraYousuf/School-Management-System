@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-lg text-center">
+<h2 class="text-xl font-semibold mb-4">Delete Student</h2>
+<p>Are you sure you want to delete <strong>{{ student.name }}</strong>?</p>
+<form method="POST" class="mt-4">
+    {% csrf_token %}
+    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Yes, Delete</button>
+    <a href="{% url 'student_dashboard' %}" class="ml-2 bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">Cancel</a>
+</form>
+</div>
+{% endblock %}

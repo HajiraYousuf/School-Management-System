@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="space-y-8">
+
+  <!-- PAGE HEADER -->
+  <div class="flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-slate-800">Teacher Management</h1>
+    <div class="flex gap-3">
+      <button onclick="openAddModal()" class="bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-xl shadow-sm font-medium transition">
+        + Add Teacher
+      </button>
+      <a href="#" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-xl shadow-sm font-medium transition">
+        Import CSV
+      </a>
+    </div>
+  </div>
+
+  <!-- TEACHER LIST TABLE -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold text-slate-700">Teacher List</h2>
+    </div>
+
+    <div class="overflow-x-auto rounded-xl border border-gray-200">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-800 text-white text-left">
+          <tr>
+            <th class="px-5 py-3 font-semibold">Teacher ID</th>
+            <th class="px-5 py-3 font-semibold">Name</th>
+            <th class="px-5 py-3 font-semibold">Level</th>
+            <th class="px-5 py-3 font-semibold">Classes</th>
+            <th class="px-5 py-3 font-semibold">Subject</th>
+            <th class="px-5 py-3 font-semibold">Phone</th>
+            <th class="px-5 py-3 font-semibold">Salary</th>
+            <th class="px-5 py-3 font-semibold text-center">Actions</th>
+          </tr>
+        </thead>
+<tbody class="divide-y">
+
+{% for teacher in teachers %}
+<tr class="hover:bg-slate-50 transition">
+
+<td class="px-5 py-3 font-medium text-gray-700">
+T{{ teacher.id }}
+</td>
+
+<td class="px-5 py-3 font-semibold text-slate-800">
+{{ teacher.name }}
+</td>
+
+<td class="px-5 py-3">
+{{ teacher.level }}
+</td>
+
+<td class="px-5 py-3">
+{% for c in teacher.classes.all %}
+{{ c.name }}{% if not forloop.last %}, {% endif %}
+{% endfor %}
+</td>
+
+<td class="px-5 py-3">
+{% for s in teacher.subjects.all %}
+{{ s.name }}{% if not forloop.last %}, {% endif %}
+{% endfor %}
+</td>
+
+<td class="px-5 py-3">
+{{ teacher.phone }}
+</td>
+
+<td class="px-5 py-3 font-medium text-emerald-600">
+${{ teacher.salary }}
+</td>
+
+<td class="px-5 py-3 flex gap-2 justify-center">
+
+<button class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-md">
+View
+</button>
+
+<button onclick="openEditModal()" class="px-3 py-1 bg-emerald-500 hover:bg-emerald-600 text-white text-xs rounded-md">
+Edit
+</button>
+
+<button onclick="openDeleteModal()" class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md">
+Delete
+</button>
+
+</td>
+
+</tr>
+{% empty %}
+
+<tr>
+<td colspan="8" class="text-center py-6 text-gray-400">
+No teachers found
+</td>
+</tr>
+
+{% endfor %}
+
+</tbody>      </table>
+    </div>
+  </div>
+
+</div>
+{%include 'add_teacher.html'%}
+{%include 'edit_teacher.html'%}
+{%include 'delete_teacher.html'%}
+
+
+<script>
+function openAddModal(){ document.getElementById("teacherModal").classList.remove("hidden"); }
+function closeAddModal(){ document.getElementById("teacherModal").classList.add("hidden"); }
+
+function openEditModal(){ document.getElementById("editteacherModal").classList.remove("hidden"); }
+function closeEditModal(){ document.getElementById("editteacherModal").classList.add("hidden"); }
+
+function openDeleteModal(){ document.getElementById("deleteTeacherModal").classList.remove("hidden"); }
+function closeDeleteModal(){ document.getElementById("deleteTeacherModal").classList.add("hidden"); }
+
+window.onclick = function(event){
+  ["teacherModal","editteacherModal","deleteTeacherModal"].forEach(function(id){
+    let modal = document.getElementById(id);
+    if(event.target == modal){ modal.classList.add("hidden"); }
+  });
+}
+</script>
+
+{% endblock %}

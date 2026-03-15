@@ -1,0 +1,62 @@
+<aside class="w-64 bg-[#08142b]
+              text-white
+              min-h-screen
+              flex flex-col
+              shadow-xl">
+
+    <!-- LOGO -->
+    <div class="h-16 flex items-center px-6
+                border-b border-white/10">
+        <h1 class="text-xl font-semibold">
+            SMS Panel
+        </h1>
+    </div>
+
+    <!-- MENU -->
+    <nav class="flex-1 p-4 space-y-1 text-sm">
+
+        <!-- DASHBOARD -->
+        <a href=""
+           class="block px-4 py-3 rounded-lg
+                  bg-blue-700">
+            📊 Dashboard
+        </a>
+
+       
+        <a href="{% url 'student_dashboard' %}" class="block px-4 py-2 hover:bg-white/10 rounded">
+            👨‍🎓 Students
+        </a>
+
+        
+        <a href="{% url 'teachers_dashboard' %}" class="block px-4 py-2 hover:bg-white/10 rounded">
+            👩‍🏫 Teachers
+        </a>
+
+
+        <a href="#" class="block px-4 py-2 hover:bg-white/10 rounded">
+            👨‍👩‍👧 Parents
+        </a>
+
+        <a href="#" class="block px-4 py-2 hover:bg-white/10 rounded">
+            📅 Attendance
+        </a>
+
+        <a href="#" class="block px-4 py-2 hover:bg-white/10 rounded">
+            📚 subjects
+        </a>
+
+        <a href="#" class="block px-4 py-2 hover:bg-white/10 rounded">
+            🏫 Classes
+        </a>
+
+        <a href="#" class="block px-4 py-2 hover:bg-white/10 rounded">
+            📝 Exams
+        </a>
+
+        <a href="#" class="block px-4 py-2 hover:bg-red-500/20 rounded">
+            🚪 Logout
+        </a>
+
+    </nav>
+
+</aside>

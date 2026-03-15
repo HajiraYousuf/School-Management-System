@@ -1,0 +1,153 @@
+<!-- BACKDROP -->
+<div id="teacherModal" class="fixed inset-0 bg-slate-900/40 flex items-center justify-center z-50 p-4 overflow-y-auto hidden">
+
+<!-- MODAL -->
+<div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl border border-slate-200">
+
+<!-- HEADER -->
+<div class="relative flex items-center px-6 py-4 border-b border-slate-200 bg-blue-900 rounded-t-2xl">
+
+<h2 class="absolute left-1/2 -translate-x-1/2 text-xl font-semibold text-white">
+Add Teacher
+</h2>
+
+<button onclick="closeAddModal()" class="ml-auto text-slate-300 hover:text-red-400 text-xl transition">
+✕
+</button>
+
+</div>
+
+
+<form method="POST" action="{% url 'add_teacher' %}" enctype="multipart/form-data">{% csrf_token %}
+
+<!-- BODY -->
+<div class="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
+
+<!-- NAME + PHONE -->
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+<label class="text-xs font-medium text-slate-500">Name</label>
+
+<input type="text" name="name"
+class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm mt-1
+focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+outline-none transition">
+</div>
+
+<div>
+<label class="text-xs font-medium text-slate-500">Phone</label>
+
+<input type="text" name="phone"
+class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm mt-1
+focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+outline-none transition">
+</div>
+
+</div>
+
+
+<!-- LEVEL + SALARY -->
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+<label class="text-xs font-medium text-slate-500">Level</label>
+
+<select name="level"
+class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm mt-1
+focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+outline-none transition">
+
+<option>Primary</option>
+<option>Secondary</option>
+
+</select>
+</div>
+
+<div>
+<label class="text-xs font-medium text-slate-500">Salary</label>
+
+<input type="number" name="salary"
+class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm mt-1
+focus:ring-2 focus:ring-blue-400 focus:border-blue-400
+outline-none transition">
+</div>
+
+</div>
+
+<!-- CLASSES + SUBJECTS -->
+<div class="grid grid-cols-2 gap-6">
+
+  <!-- CLASSES -->
+  <div>
+    <p class="text-sm font-semibold text-gray-700 mb-2">Classes</p>
+    <div class="border border-gray-200 rounded-xl p-4 space-y-2 bg-gray-50">
+      {% for cls in classes %}
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" name="classes[]" value="{{ cls.id }}"
+        class="accent-blue-600"
+        {% if cls in teacher.classes.all %} checked {% endif %}>
+        {{ cls.name }}
+      </label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- SUBJECTS -->
+  <div>
+    <p class="text-sm font-semibold text-gray-700 mb-2">Subjects</p>
+    <div class="border border-gray-200 rounded-xl p-4 space-y-2 bg-gray-50">
+      {% for subj in subjects %}
+      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+        <input type="checkbox" name="subjects[]" value="{{ subj.id }}"
+        class="accent-blue-600"
+        {% if subj in teacher.subjects.all %} checked {% endif %}>
+        {{ subj.name }}
+      </label>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<!-- CV -->
+<div>
+
+<label class="text-xs font-medium text-slate-500">
+Upload CV
+</label>
+
+<input type="file" name="cv"
+class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm mt-1">
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+<div class="flex justify-end gap-3 px-6 py-4 border-t border-slate-200 bg-slate-50 rounded-b-2xl">
+
+<button type="button"
+onclick="closeAddModal()"
+class="px-4 py-2 text-sm border border-slate-200 rounded-lg
+hover:bg-slate-100 transition">
+
+Cancel
+
+</button>
+
+<button type="submit"
+class="px-4 py-2 text-sm bg-blue-700 text-white rounded-lg
+hover:bg-blue-600 shadow-sm transition">
+
+Save Teacher
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+</div>

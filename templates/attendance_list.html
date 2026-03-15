@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="space-y-6">
+<div class="flex justify-between items-center mb-4">
+<h1 class="text-2xl font-bold">Attendance</h1>
+<a href="{% url 'teacher_attendance' %}" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Mark Attendance</a>
+</div>
+
+<!-- Filter by Date -->
+<form method="GET" class="mb-4">
+<label class="mr-2">Date:</label>
+<input type="date" name="date" value="{{ search_date }}" class="border rounded px-2 py-1">
+<button type="submit" class="bg-blue-700 text-white px-3 py-1 rounded hover:bg-blue-800">Filter</button>
+</form>
+
+<table class="w-full text-left border border-gray-200 rounded">
+<thead class="bg-slate-800 text-white">
+<tr>
+<th class="px-4 py-2">Student</th>
+<th class="px-4 py-2">Status</th>
+<th class="px-4 py-2">Note</th>
+<th class="px-4 py-2 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y">
+{% for record in attendance_records %}
+<tr class="hover:bg-slate-50">
+<td class="px-4 py-2">{{ record.student.name }}</td>
+<td class="px-4 py-2">{{ record.get_status_display }}</td>
+<td class="px-4 py-2">{{ record.note }}</td>
+<td class="px-4 py-2 flex gap-2 justify-center">
+<a href="#" class="px-3 py-1 bg-emerald-500 text-white text-xs rounded hover:bg-emerald-600">Edit</a>
+<a href="#" class="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">Delete</a>
+</td>
+</tr>
+{% empty %}
+<tr><td colspan="4" class="text-center py-2">No attendance records for this date.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}

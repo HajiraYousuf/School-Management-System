@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="space-y-8">
+
+    <!-- PAGE HEADER -->
+    <div class="flex justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-bold text-[#0a1f44]">
+                Dashboard
+            </h1>
+            <p class="text-gray-500 text-sm">
+                Welcome back, Admin 👋
+            </p>
+        </div>
+
+        <button class="bg-[#0a1f44]
+                       text-white
+                       px-5 py-2
+                       rounded-xl
+                       shadow hover:opacity-90">
+            + Add Student
+        </button>
+    </div>
+
+
+    <!-- ================= STAT CARDS ================= --><!-- ================= STAT CARDS ================= -->
+<div class="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
+<!-- Total Students -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Total Students</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">520</h2>
+</div>
+
+<!-- Teachers -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Teachers</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">45</h2>
+</div>
+
+<!-- Classes -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Classes</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">18</h2>
+</div>
+
+<!-- Subjects -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Subjects</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">32</h2>
+</div>
+
+<!-- Attendance -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Attendance</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">92%</h2>
+</div>
+
+<!-- Exams -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Exams</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">6</h2>
+</div>
+
+<!-- Fees -->
+<div class="bg-white p-4 rounded-xl shadow-md">
+    <p class="text-gray-500 text-sm">Fees Collected</p>
+    <h2 class="text-2xl font-semibold text-[#0a1f44] mt-1">$12,500</h2>
+</div>
+
+</div>
+    <!-- ================= MAIN SECTION ================= -->
+    <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- RECENT STUDENTS -->
+        <div class="lg:col-span-2
+                    bg-white
+                    rounded-2xl
+                    shadow-lg
+                    p-6">
+
+            <h2 class="text-lg font-semibold text-[#0a1f44] mb-5">
+                Recent Students
+            </h2>
+
+            <div class="space-y-4">
+
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <p class="font-medium">Ahmed Ali</p>
+                        <p class="text-sm text-gray-400">Grade 10</p>
+                    </div>
+                    <span class="text-sm text-gray-400">Today</span>
+                </div>
+
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <p class="font-medium">Hodan Yusuf</p>
+                        <p class="text-sm text-gray-400">Grade 9</p>
+                    </div>
+                    <span class="text-sm text-gray-400">Yesterday</span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-medium">Mohamed Noor</p>
+                        <p class="text-sm text-gray-400">Grade 8</p>
+                    </div>
+                    <span class="text-sm text-gray-400">2 days ago</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANNOUNCEMENTS -->
+        <div class="bg-gradient-to-br
+                    from-[#0a1f44]
+                    to-blue-700
+                    text-white
+                    rounded-2xl
+                    shadow-lg
+                    p-6">
+
+            <h2 class="text-lg font-semibold mb-5">
+                Announcements
+            </h2>
+
+            <ul class="space-y-4 text-sm">
+
+                <li class="border-b border-white/20 pb-2">
+                    Midterm exams start next week.
+                </li>
+
+                <li class="border-b border-white/20 pb-2">
+                    Teacher meeting on Monday.
+                </li>
+
+                <li>
+                    New student registration open.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACTIVITY ================= -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+
+        <h2 class="text-lg font-semibold text-[#0a1f44] mb-4">
+            Recent Activity
+        </h2>
+
+        <div class="space-y-3 text-sm">
+
+            <div class="flex justify-between border-b pb-2">
+                <span>New student registered</span>
+                <span class="text-gray-400">5 min ago</span>
+            </div>
+
+            <div class="flex justify-between border-b pb-2">
+                <span>Class timetable updated</span>
+                <span class="text-gray-400">1 hour ago</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span>Results uploaded</span>
+                <span class="text-gray-400">Yesterday</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-lg mt-6">
+    <h1 class="text-2xl font-bold mb-6 text-slate-800">Mark Attendance for {{ today }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-slate-700 text-white">
+                <tr>
+                    <th class="px-4 py-3 text-left">Student</th>
+                    <th class="px-4 py-3 text-left">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-4 py-2 text-slate-700">{{ student.name }}</td>
+                    <td class="px-4 py-2 flex gap-2">
+                        <!-- Present -->
+                        <button type="button"
+                            class="px-4 py-1 rounded text-white {% if student.attendance and student.attendance.status == 'P' %}bg-green-500{% else %}bg-gray-300{% endif %}"
+                            onclick="setStatus({{ student.id }}, 'P')">P</button>
+
+                        <!-- Absent -->
+                        <button type="button"
+                            class="px-4 py-1 rounded text-white {% if student.attendance and student.attendance.status == 'A' %}bg-red-500{% else %}bg-gray-300{% endif %}"
+                            onclick="setStatus({{ student.id }}, 'A')">A</button>
+
+                        <!-- Late -->
+                        <button type="button"
+                            class="px-4 py-1 rounded text-white {% if student.attendance and student.attendance.status == 'L' %}bg-orange-500{% else %}bg-gray-300{% endif %}"
+                            onclick="setStatus({{ student.id }}, 'L')">L</button>
+
+                        <input type="hidden" name="status_{{ student.id }}" id="status_{{ student.id }}"
+                            value="{% if student.attendance %}{{ student.attendance.status }}{% else %}A{% endif %}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow-sm transition-all">
+            Save Attendance
+        </button>
+    </form>
+</div>
+
+<script>
+function setStatus(studentId, status) {
+    document.getElementById('status_' + studentId).value = status;
+
+    // Update button colors
+    const row = document.getElementById('status_' + studentId).closest('tr');
+    const buttons = row.querySelectorAll('button');
+    buttons.forEach(btn => {
+        const btnStatus = btn.textContent;
+        if (btnStatus === 'P') btn.className = `px-4 py-1 rounded text-white ${status==='P'?'bg-green-500':'bg-gray-300'}`;
+        if (btnStatus === 'A') btn.className = `px-4 py-1 rounded text-white ${status==='A'?'bg-red-500':'bg-gray-300'}`;
+        if (btnStatus === 'L') btn.className = `px-4 py-1 rounded text-white ${status==='L'?'bg-orange-500':'bg-gray-300'}`;
+    });
+}
+</script>
+{% endblock %}

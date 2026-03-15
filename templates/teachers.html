@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="space-y-8">
+
+<!-- PAGE HEADER -->
+<div class="flex justify-between items-center">
+<h1 class="text-3xl font-bold text-slate-800">Student Management</h1>
+
+<div class="flex gap-3">
+<a href="#" class="bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-xl shadow-sm font-medium transition">
++ Add Student
+</a>
+
+<a href="#" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2 rounded-xl shadow-sm font-medium transition">
+Import CSV
+</a>
+</div>
+</div>
+
+
+<!-- STUDENT LIST CARD -->
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+
+<!-- TITLE -->
+
+<div class="flex justify-between items-center mb-6">
+
+<h2 class="text-xl font-semibold text-slate-700">
+Student List
+</h2>
+
+<div class="flex gap-2 text-white">
+
+<button class="px-4 py-1.5 bg-blue-700 hover:bg-blue-800 rounded-lg text-sm font-medium transition shadow-sm">
+Print
+</button>
+
+<button class="px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 rounded-lg text-sm font-medium transition shadow-sm">
+Export CSV
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SEARCH & FILTER -->
+
+<div class="grid grid-cols-5 gap-4 mb-10 ">
+
+<!-- SEARCH -->
+
+<div class="relative">
+
+<label class="text-sm font-medium text-gray-600 mb-1 block">
+Search
+</label>
+
+<input type="text"
+placeholder="Name or Student ID"
+class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none">
+
+<span class="absolute left-3 top-9 text-gray-400 text-sm">
+🔍
+</span>
+
+</div>
+
+
+<!-- CLASS -->
+
+<div>
+<label class="text-sm font-medium text-gray-600 mb-1 block">
+Class
+</label>
+
+<select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-300">
+<option>All Classes</option>
+<option>Grade 1</option>
+<option>Grade 2</option>
+</select>
+
+</div>
+
+
+<!-- SECTION -->
+
+<div>
+
+<label class="text-sm font-medium text-gray-600 mb-1 block">
+Section
+</label>
+
+<select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-300">
+
+<option>All Sections</option>
+<option>A</option>
+<option>B</option>
+
+</select>
+
+</div>
+
+
+<!-- FILTER BUTTONS -->
+
+<div class="flex items-end gap-3 justify-end col-span-2">
+
+<button class="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-sm font-medium transition shadow-sm">
+Filter
+</button>
+
+<button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg text-sm font-medium transition">
+Clear
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TABLE -->
+
+<div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+
+<table class="w-full text-sm text-left">
+
+<thead class="bg-slate-800 text-white">
+
+<tr>
+<th class="px-5 py-3 font-semibold">Student ID</th>
+<th class="px-5 py-3 font-semibold">Name</th>
+<th class="px-5 py-3 font-semibold">Class</th>
+<th class="px-5 py-3 font-semibold">Section</th>
+<th class="px-5 py-3 font-semibold">Parent</th>
+<th class="px-5 py-3 font-semibold">Monthly Fee</th>
+<th class="px-5 py-3 font-semibold text-center">Actions</th>
+</tr>
+
+</thead>
+
+
+<tbody class="divide-y">
+
+<tr class="hover:bg-blue-50 transition">
+
+<td class="px-5 py-3 font-medium text-gray-700">KT001</td>
+<td class="px-5 py-3 font-semibold text-slate-800">Ahmed Hassan</td>
+<td class="px-5 py-3">Grade 1</td>
+<td class="px-5 py-3">A</td>
+<td class="px-5 py-3">Ahmed Hassan</td>
+<td class="px-5 py-3 font-medium text-green-600">$50</td>
+
+<td class="px-5 py-3 flex gap-2 justify-center">
+
+<a class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-md shadow">
+View
+</a>
+
+<a class="px-3 py-1 bg-emerald-500 hover:bg-emerald-600 text-white text-xs rounded-md shadow">
+Edit
+</a>
+
+<a class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md shadow">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+
+<tr class="bg-gray-50 hover:bg-blue-50 transition">
+
+<td class="px-5 py-3 font-medium text-gray-700">KT002</td>
+<td class="px-5 py-3 font-semibold text-slate-800">Amina Mohamed</td>
+<td class="px-5 py-3">Grade 1</td>
+<td class="px-5 py-3">A</td>
+<td class="px-5 py-3">Ahmed Hassan</td>
+<td class="px-5 py-3 font-medium text-green-600">$50</td>
+
+<td class="px-5 py-3 flex gap-2 justify-center">
+
+<a class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-md shadow">
+View
+</a>
+
+<a class="px-3 py-1 bg-emerald-500 hover:bg-emerald-600 text-white text-xs rounded-md shadow">
+Edit
+</a>
+
+<a class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md shadow">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+
+<tr class="hover:bg-blue-50 transition">
+
+<td class="px-5 py-3 font-medium text-gray-700">KT003</td>
+<td class="px-5 py-3 font-semibold text-slate-800">Khadija Ali</td>
+<td class="px-5 py-3">Grade 1</td>
+<td class="px-5 py-3">A</td>
+<td class="px-5 py-3">Ahmed Hassan</td>
+<td class="px-5 py-3 font-medium text-green-600">$70</td>
+
+<td class="px-5 py-3 flex gap-2 justify-center">
+
+<a class="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded-md shadow">
+View
+</a>
+
+<a class="px-3 py-1 bg-emerald-500 hover:bg-emerald-600 text-white text-xs rounded-md shadow">
+Edit
+</a>
+
+<a class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs rounded-md shadow">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

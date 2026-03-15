@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="space-y-6">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Subjects</h1>
+    <a href="{% url 'subject_add' %}" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">+ Add Subject</a>
+  </div>
+
+  <table class="w-full text-left border border-gray-200 rounded">
+    <thead class="bg-slate-800 text-white">
+      <tr>
+        <th class="px-4 py-2">Name</th>
+        <th class="px-4 py-2">Level</th> <!-- NEW COLUMN -->
+        <th class="px-4 py-2 text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      {% for subject in subjects %}
+      <tr class="hover:bg-slate-50">
+        <td class="px-4 py-2">{{ subject.name }}</td>
+        <td class="px-4 py-2">{{ subject.level }}</td> <!-- NEW COLUMN -->
+        <td class="px-4 py-2 flex gap-2 justify-center">
+          <a href="{% url 'subject_edit' subject.id %}" class="px-3 py-1 bg-emerald-500 text-white text-xs rounded hover:bg-emerald-600">Edit</a>
+          <a href="{% url 'subject_delete' subject.id %}" class="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="3" class="text-center py-2">No subjects found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
